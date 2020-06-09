@@ -1,0 +1,38 @@
+--------> se crea un servicio: smart.service
+https://www.raspberrypi.org/documentation/linux/usage/systemd.md
+----------------------------------------------------------------------
+[Unit]
+Description=Smart Home
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/python3 -u main.py
+WorkingDirectory=/home/pi/PycharmProjects/smart_home/smart_home
+StandardOutput=inherit
+StandardError=inherit
+Restart=always
+User=pi
+
+[Install]
+WantedBy=multi-user.target
+---------------------------------------------------------------------
+-------------> se copia en
+pi@raspberrypi:~ $ sudo cp smart.service /etc/systemd/system/smart.service
+
+-------------> se prueba: start - stop hasta que funcione bien
+pi@raspberrypi:~ $ sudo systemctl start smart.service
+pi@raspberrypi:~ $ sudo systemctl stop smart.service
+
+-------------> se registra o deshabilita: enable - disable
+pi@raspberrypi:~ $ sudo systemctl enable smart.service
+pi@raspberrypi:~ $ sudo systemctl disable smart.service
+
+-------------> Si se cambia se recarga
+pi@raspberrypi:~ $ sudo systemctl daemon-reload
+
+-------------> Para ver el estado
+pi@raspberrypi:~ $ systemctl status smart
+
+-------------> https://fedoramagazine.org/what-is-an-init-system/ 
+
+

@@ -1,0 +1,36 @@
+win > python setup.py install
+win > python smart_home/main.py #arranca por consola desde la raiz del proyecto
+
+pi@raspberrypi:~/ $ sudo python3 setup.py install  # build
+pi@raspberrypi:~/ $ python3 ./smart_home/main.py   # run
+
+# run python at boot
+pi@raspberrypi:~/ $ sudo nano /etc/rc.local
+    add: python3 /home/pi/PycharmProjects/smart-home/smart_home/main.py &
+
+    para salir y guardar: crl-X & Y & enter
+pi@raspberrypi:~/ $ sudo reboot
+
+
+
+sudo nano my.sh
+sudo chmod 755 *,sh
+sudo crontab -e
+    @reboot sh /home/pi/boot.sh
+
+    para salir y guardar: crl-X & Y & enter
+
+
+pi@raspberrypi:~/ $ sudo rm -rf dir_not_empty
+
+
+
+
+
+* PyPI (https://pypi.org/), the Python Package Index is the key repository for Python distributions
+  where you can find Python software created and shared by other developers to install and use in your own programs.
+
+win > pip3 install my_project
+win > python setup.py --help-commands
+win > python -m easy_install C:\**.egg
+
