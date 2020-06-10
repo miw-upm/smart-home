@@ -1,4 +1,5 @@
 import os
+import subprocess
 
 from fastapi import FastAPI
 
@@ -8,14 +9,20 @@ from smart_home.services import gpio_service
 app = FastAPI()
 
 
-@app.get("/app-info")
+@app.get("/system/app-info")
 def read_app_info():
     return {"app_info": "smart-home-r1"}
 
 
-@app.post("/reboot")
+@app.post("/system/reboot")
 def reboot():
     os.system('sudo reboot now')
+
+
+@app.post("/system/update")
+def update():
+    result = subprocess.Popen("git pull origin master ", shell=True, stdout=subprocess.PIPE)
+    return {"stdout": result.stdout.read()}
 
 
 @app.post("/items")
@@ -52,4 +59,3 @@ def delete_all():
 @app.post("/")
 def create_all():
     gpio_service.create_all()
-
