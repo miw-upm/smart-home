@@ -21,6 +21,7 @@ class PushButton:
         self.when_long_press = None
         self.__button.when_pressed = self.__pressed
         self.__button.when_held = self.__held
+        print('INFO:     PushButton:', pin.name, '-',  pin.value)
 
     def __pressed(self):
         rise_time = time.time() - self.__last_time

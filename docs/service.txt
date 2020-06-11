@@ -3,9 +3,11 @@ https://www.raspberrypi.org/documentation/linux/usage/systemd.md
 ----------------------------------------------------------------------
 [Unit]
 Description=Smart Home
-After=network.target
+After=network.target network-online.target
+Wants=network-online.target
 
 [Service]
+ExecStartPre=/bin/sleep 10
 ExecStart=/usr/bin/python3 -u main.py
 WorkingDirectory=/home/pi/PycharmProjects/smart_home/smart_home
 StandardOutput=inherit
@@ -16,6 +18,9 @@ User=pi
 [Install]
 WantedBy=multi-user.target
 ---------------------------------------------------------------------
+-------------> se habilita el servicio
+pi@raspberrypi:~ $ sudo systemctl enable systemd-networkd-wait-online.service
+
 -------------> se copia en
 pi@raspberrypi:~ $ sudo cp smart.service /etc/systemd/system/smart.service
 
@@ -33,6 +38,5 @@ pi@raspberrypi:~ $ sudo systemctl daemon-reload
 -------------> Para ver el estado
 pi@raspberrypi:~ $ systemctl status smart
 
--------------> https://fedoramagazine.org/what-is-an-init-system/ 
-
+-------------> https://fedoramagazine.org/what-is-an-init-system/
 

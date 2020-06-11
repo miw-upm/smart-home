@@ -1,3 +1,4 @@
+from fastapi.logger import logger
 from gpiozero import LED
 
 from smart_home.bindings.gpio import Pin
@@ -8,6 +9,7 @@ class Light:
         self.name = name
         self.pin = pin
         self.__led = LED(pin.value, active_high=False)
+        print('INFO:     Light:', pin.name, '-', pin.value)
 
     def on(self):
         self.__led.on()

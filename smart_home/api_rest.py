@@ -21,8 +21,11 @@ def reboot():
 
 @app.post("/system/update")
 def update():
-    result = subprocess.Popen("git pull origin master ", shell=True, stdout=subprocess.PIPE)
-    return {"stdout": result.stdout.read()}
+    subprocess.Popen("cd /home/pi/PycharmProjects/smart-home", shell=True)
+    result = subprocess.Popen("git pull origin master", shell=True, stdout=subprocess.PIPE)
+    subprocess.Popen("sudo python3 /home/pi/PycharmProjects/smart-home/setup.py install", shell=True,
+                               stdout=subprocess.PIPE)
+    return {"git": result.stdout.read()}
 
 
 @app.post("/items")

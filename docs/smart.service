@@ -1,8 +1,10 @@
 [Unit]
 Description=Smart Home
-After=network.target
+After=network.target network-online.target
+Wants=network-online.target
 
 [Service]
+ExecStartPre=/bin/sleep 10
 ExecStart=/usr/bin/python3 -u main.py
 WorkingDirectory=/home/pi/PycharmProjects/smart-home/smart_home
 StandardOutput=inherit

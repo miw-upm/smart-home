@@ -14,7 +14,6 @@ class GpioService:
     blinds = dict()
 
     def __init__(self):
-
         self.start_gpios()
         self.start_rules()
 
@@ -35,7 +34,6 @@ class GpioService:
                           self.lights[rule.actions[1].item.name])
         for rule in RuleEntity.select().where(RuleEntity.kind == 'BlindRule').prefetch(RuleActionEntity):
             BlindRule(rule.name, self.buttons[rule.trigger.name], self.blinds[rule.actions[0].item.name])
-        print('start rules...')
 
     @db.atomic()
     def create_item(self, item_creation: ItemCreation):
