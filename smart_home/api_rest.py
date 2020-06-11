@@ -19,6 +19,11 @@ def reboot():
     os.system('sudo reboot now')
 
 
+@app.post("/system/shutdown")
+def reboot():
+    os.system('sudo shutdown now')
+
+
 @app.post("/system/update")
 def update():
     subprocess.Popen("cd /home/pi/PycharmProjects/smart-home", shell=True)
