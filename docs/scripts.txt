@@ -34,3 +34,6 @@ win > pip3 install my_project
 win > python setup.py --help-commands
 win > python -m easy_install C:\**.egg
 
+
+PARECE QUE GPIO19 ESTA ROTO
+

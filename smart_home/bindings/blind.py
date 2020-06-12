@@ -24,7 +24,7 @@ class Blind:
         self.kind = kind
         self.__state = State.DOWN
         self.stop()
-        print('INFO:     Blind:', pin_up.name, '-', pin_down.value, pin_up.name, '-', pin_down.value)
+        print('INFO:     Blind:', pin_up.name, '-', pin_up.value, pin_down.name, '-', pin_down.value)
 
     def __delay_stop(self):
         time.sleep(self.DELAY_TIME)  # double time

@@ -30,12 +30,15 @@ class PushButton:
         self.__last_time = time.time()
         if rise_time < PushButton.DOUBLE_CLICK_TIME:
             if self.when_double_click is not None:
+                print('INFO:    Double-click', self.name)
                 self.when_double_click()
         else:
             if self.when_click is not None:
+                print('INFO:    Click', self.name)
                 self.when_click()
 
     def __held(self):
         self.__last_time = time.time()
         if self.when_long_press is not None:
+            print('INFO:    Long-press', self.name)
             self.when_long_press()

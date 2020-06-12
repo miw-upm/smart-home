@@ -85,7 +85,7 @@ class GpioService:
         button3 = ItemEntity.create(name="r2-button-bedhead", kind="PushButton")
         PinEntity.create(owner=button3, type="b3", name=gpio.Pin.IN_2)
         button4 = ItemEntity.create(name="r2-button-blind", kind="PushButton")
-        PinEntity.create(owner=button4, type="b4", name=gpio.Pin.IN_3)
+        PinEntity.create(owner=button4, type="b4", name=gpio.Pin.IN_5)
         blind1 = ItemEntity.create(name="r2-blind", kind="Blind")
         PinEntity.create(owner=blind1, type="up", name=gpio.Pin.OUT_3)
         PinEntity.create(owner=blind1, type="down", name=gpio.Pin.OUT_4)
